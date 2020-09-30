@@ -1,0 +1,11 @@
+# All configuration items related to provision to different environments
+# production secrets have to go to secrets.yml, where we use git secret to encrypt
+
+default: &default
+  domain: "cloudera"
+  port: 7180
+  ? hostname
+
+localdev:
+  <<: *default
+  hostname: "quickstart-vm"
