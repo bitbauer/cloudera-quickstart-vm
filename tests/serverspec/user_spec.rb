@@ -1,11 +1,7 @@
 require_relative 'spec_helper'
-require 'yaml'
 
-configpath = Pathname.new(__FILE__).dirname.join('..', 'configuration.yml')
-configuration = YAML.load_file configpath
-
-deploy_user = configuration['techuser']['NAME']
-deploy_home = configuration['techuser']['HOME']
+deploy_user = "cloudera"
+deploy_home = "/home/cloudera"
 
 describe user(deploy_user) do
   it { should exist }

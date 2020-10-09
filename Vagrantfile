@@ -25,15 +25,15 @@ Vagrant.configure(VAGRANTFILE_VERSION) do |config|
     # Basic configuration for VirtualBox
     guest.vm.provider "virtualbox" do |vb|
       vb.name=vm_name
-      vb.cpus=2
-      vb.memory=10240
-      #vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
-	  vb.customize ["modifyvm", :id, "--vram", "256"]
+      vb.cpus=4
+      vb.memory=8192
+      vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
+      vb.customize ["modifyvm", :id, "--vram", "256"]
     end
     guest.vm.box = "quickstart/cdh"
-	guest.vm.box_version = "5.15.2"
-    guest.vm.network "private_network", type: "dhcp"
-    guest.vm.network "forwarded_port", guest: configuration["port"], host: configuration["port"]
+    guest.vm.box_version = "5.15.2"
+    # guest.vm.network "private_network", type: "dhcp"
+    # guest.vm.network "forwarded_port", guest: configuration["port"], host: configuration["port"]
 
     # Define VM name and resolving its name to IP address
     guest.vm.hostname = vm_fqdn
